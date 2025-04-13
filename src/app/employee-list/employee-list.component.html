@@ -1,0 +1,25 @@
+<div class="employee-list-container">
+    <h1>Employee Management</h1>
+    
+    <button mat-raised-button color="primary" (click)="addEmployee()" class="add-button">
+      Add New Employee
+    </button>
+  
+    <div class="employee-grid">
+      <mat-card *ngFor="let employee of employees" class="employee-card">
+        <img [src]="employee.avatar" alt="Employee Avatar" class="avatar">
+        <mat-card-content>
+          <h2>{{ employee.name }}</h2>
+          <p><strong>Company:</strong> {{ employee.companyName }}</p>
+          <p><strong>Designation:</strong> {{ employee.designation }}</p>
+          <p><strong>Email:</strong> {{ employee.email }}</p>
+          <p><strong>Contact:</strong> {{ employee.contactNo }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="viewEmployee(employee.id)">View</button>
+          <button mat-button color="accent" (click)="editEmployee(employee.id)">Edit</button>
+          <button mat-button color="warn" (click)="deleteEmployee(employee.id)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>

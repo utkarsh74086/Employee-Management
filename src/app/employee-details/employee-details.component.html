@@ -1,0 +1,28 @@
+<div class="details-container" *ngIf="employee">
+    <button (click)="goBack()" class="back-button">
+        ← Back to List
+      </button>
+      
+    <mat-card class="details-card">
+      <img [src]="employee.avatar" alt="Employee Avatar" class="avatar-large">
+      <mat-card-content>
+        <h1>{{ employee.name }}</h1>
+        <div class="detail-row">
+          <span class="detail-label">Company:</span>
+          <span>{{ employee.companyName }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Designation:</span>
+          <span>{{ employee.designation }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Email:</span>
+          <span>{{ employee.email }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Contact No:</span>
+          <span>{{ employee.contactNo }}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>

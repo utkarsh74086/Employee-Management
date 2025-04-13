@@ -1,0 +1,58 @@
+<div class="form-container">
+    <h1>{{ isEditMode ? 'Edit Employee' : 'Add New Employee' }}</h1>
+    
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="employee-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="employeeForm.get('name')?.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Company Name</mat-label>
+        <input matInput formControlName="companyName" required>
+        <mat-error *ngIf="employeeForm.get('companyName')?.hasError('required')">
+          Company name is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required>
+        <mat-error *ngIf="employeeForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="employeeForm.get('email')?.hasError('email')">
+          Please enter a valid email
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Contact Number</mat-label>
+        <input matInput formControlName="contactNo" required>
+        <mat-error *ngIf="employeeForm.get('contactNo')?.hasError('required')">
+          Contact number is required
+        </mat-error>
+        <mat-error *ngIf="employeeForm.get('contactNo')?.hasError('pattern')">
+          Please enter a valid contact number (10-15 digits)
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Designation</mat-label>
+        <input matInput formControlName="designation" required>
+        <mat-error *ngIf="employeeForm.get('designation')?.hasError('required')">
+          Designation is required
+        </mat-error>
+      </mat-form-field>
+  
+      <div class="form-actions">
+        <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">
+          {{ isEditMode ? 'Update' : 'Save' }}
+        </button>
+      </div>
+      </form>
+  </div>
